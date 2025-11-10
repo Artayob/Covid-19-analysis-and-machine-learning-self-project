@@ -148,11 +148,11 @@ with st.expander("🔍 Click to open the interactive predictor"):
         'Positivity Rate': [positivity_rate]
     })
 
-    st.markdown("### 🧩 Input Summary")
+    st.markdown("Input Summary")
     st.dataframe(user_input.style.highlight_max(color='lightgreen', axis=1))
 
     # Predict button
-    if st.button("🔮 Predict Deaths Now"):
+    if st.button(" Predict Deaths Now"):
         try:
             # Match training feature columns
             missing_cols = [col for col in X.columns if col not in user_input.columns]
@@ -164,13 +164,13 @@ with st.expander("🔍 Click to open the interactive predictor"):
             prediction = model.predict(user_input_scaled)[0]
 
             # Display results
-            st.success(f"🧾 **Predicted Total Deaths: {prediction:,.0f}**")
+            st.success(f" **Predicted Total Deaths: {prediction:,.0f}**")
 
             # Show contextual feedback
             st.markdown(f"""
-            - 🧍 Population Size: **{population:,}**
-            - 💉 Vaccination Rate: **{vaccination_rate}%**
-            - 😷 Positivity Rate: **{positivity_rate}%**
+            -  Population Size: **{population:,}**
+            -  Vaccination Rate: **{vaccination_rate}%**
+            -  Positivity Rate: **{positivity_rate}%**
             """)
 
             # Visual comparison graph
@@ -206,11 +206,11 @@ with st.expander("🔍 Click to open the interactive predictor"):
             new_row["Predicted Deaths"] = prediction
             st.session_state["prediction_history"] = pd.concat([st.session_state["prediction_history"], new_row], ignore_index=True)
 
-            st.markdown("### 📊 Prediction History")
+            st.markdown("Prediction History")
             st.dataframe(st.session_state["prediction_history"].tail(5))
 
             # Line chart to show predictions over time
             st.line_chart(st.session_state["prediction_history"]["Predicted Deaths"], use_container_width=True)
 
         except Exception as e:
-            st.error(f"⚠️ An error occurred while predicting: {e}")
+            st.error(f"An error occurred while predicting: {e}")
