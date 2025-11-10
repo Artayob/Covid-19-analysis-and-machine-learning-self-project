@@ -122,7 +122,7 @@ st.markdown("---")
 st.header(" Interactive COVID-19 Death Prediction Tool")
 st.markdown("Use this interactive tool to estimate **Total Deaths** based on your custom COVID-19 scenario.")
 
-with st.expander("🔍 Click to open the interactive predictor"):
+with st.expander("Click to open the interactive predictor"):
     st.write("Adjust the sliders and inputs below to simulate different pandemic conditions and see how they affect predicted deaths.")
 
     # Split UI into two columns for cleaner layout
